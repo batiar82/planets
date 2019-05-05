@@ -8,7 +8,7 @@ public interface ForecastService {
 
     Integer countRainyPeriods(Integer day);
 
-    Integer countOptimallPeriods(Integer day);
+    Integer countOptimalPeriods(Integer day);
 
     Integer maxRainyDay();
 

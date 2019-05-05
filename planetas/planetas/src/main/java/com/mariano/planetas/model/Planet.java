@@ -1,5 +1,6 @@
 package com.mariano.planetas.model;
 
+import com.mariano.planetas.utils.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -25,9 +26,9 @@ public class Planet {
      */
     private boolean clockwise;
 
-    public int getDegressAtDays(int days)
+    public int getDegressAtDays(int day)
     {
-        int deg = clockwise ? speed * days*-1 : speed * days;
+        int deg = clockwise ? speed * day*-1 : speed * day;
         return deg % 360 ;
     }
 }

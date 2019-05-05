@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ForecastRepository extends CrudRepository<Forecast, Integer> {
-    Integer findByMaxRainDay();
+
 }

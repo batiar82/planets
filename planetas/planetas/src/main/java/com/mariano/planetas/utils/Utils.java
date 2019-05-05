@@ -8,28 +8,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Utils {
-
+/*
     public static boolean areAllAligned(int days, Planet... planets){
         List<Point> positions = Arrays.asList(planets).stream().map(planet -> getPosition(planet,days)).collect(Collectors.toList());
         return areAligned(positions.get(0), positions.get(1), positions.get(2));
     }
-
+*/
     public static boolean areAlignedWithTheSun(int days, Planet a, Planet b, Planet c){
         int posA = a.getDegressAtDays(days);
         int posB = b.getDegressAtDays(days);
         int posC = c.getDegressAtDays(days);
-      /*  if (posA == posB && posA == posC)
-        {
-            return true;
-        }*/
-        if(posA == posB || Math.abs(posA - posB) == 180  && (posA == posC || Math.abs(posA - posC) ==180 ) && (posB == posC || Math.abs(posB -posC) == 180))
+
+        if(posA == posB || Math.abs(posA - posB) % 180 == 0  && (posA == posC || Math.abs(posA - posC) % 180 == 0 ) && (posB == posC || Math.abs(posB -posC) % 180 == 0))
         {
             return true;
         }
-        else
-            {
-            return false;
-        }
+       return false;
     }
 
     public static Point getPosition(Planet planet, int days)
@@ -38,7 +32,7 @@ public class Utils {
         double y =  Math.cos(Math.toRadians(planet.getDegressAtDays(days)));
         return new Point(y*planet.getDistance(),x*planet.getDistance()).round();
     }
-
+/*
     public static boolean areAligned(Point a, Point b, Point c)
     {
         if(a.getX() == b.getX() && a.getX() == c.getX() || a.getY() == b.getY() && a.getY() == c.getY())
@@ -53,7 +47,7 @@ public class Utils {
         }
 
     }
-
+*/
     /**
      * Calculo del area de 3 puntos
      * @param a el primer punto
@@ -89,13 +83,17 @@ public class Utils {
      * @param c el tercer punto
      * @return true si los puntos contienen al Sol (0,0), false sino
      */
-    public static boolean periodoDeLluvia(Point a, Point b, Point c){
+    public static boolean rainyPeriod(Point a, Point b, Point c){
         Point sol = new Point(0,0);
         double t0 = area(a,b,c);
         double t1 = area(a,b,sol);
         double t2 = area(b,c,sol);
         double t3 = area(c,a,sol);
         return (t1+t2+t3) == t0;
+    }
+
+    public static boolean optimalPeriod(Point a, Point b, Point c){
+        return area(a,b,c) == 0 && !rainyPeriod(a,b,c);
     }
 }
 

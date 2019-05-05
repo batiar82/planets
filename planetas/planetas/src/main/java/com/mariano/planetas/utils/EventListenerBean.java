@@ -21,13 +21,13 @@ public class EventListenerBean {
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-
+        Forecast forecast;
         for (int i = 0; i< 365*10 ; i++)
         {
-
-            Forecast forecast = new Forecast(i, )
+            forecast = new Forecast(i, Forecast.Condition.RAINY, false);
+            forecastRepository.save(forecast);
         }
-        log.debug("Forecast seeded");
+        log.debug("Forecast seeded for the next 10 years");
 
     }
 }
