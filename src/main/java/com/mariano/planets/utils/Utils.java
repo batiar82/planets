@@ -11,9 +11,9 @@ public class Utils {
     }
 */
     public static boolean areAlignedWithTheSun(int days, Planet a, Planet b, Planet c){
-        int posA = a.getDegressAtDays(days);
-        int posB = b.getDegressAtDays(days);
-        int posC = c.getDegressAtDays(days);
+        int posA = a.getDegresAtDays(days);
+        int posB = b.getDegresAtDays(days);
+        int posC = c.getDegresAtDays(days);
 
         if(posA == posB || Math.abs(posA - posB) % 180 == 0  && (posA == posC || Math.abs(posA - posC) % 180 == 0 ) && (posB == posC || Math.abs(posB -posC) % 180 == 0))
         {
@@ -24,8 +24,8 @@ public class Utils {
 
     public static Point getPosition(Planet planet, int days)
     {
-        double x = Math.sin(Math.toRadians(planet.getDegressAtDays(days)));
-        double y =  Math.cos(Math.toRadians(planet.getDegressAtDays(days)));
+        double x = Math.sin(Math.toRadians(planet.getDegresAtDays(days)));
+        double y =  Math.cos(Math.toRadians(planet.getDegresAtDays(days)));
         return new Point(y*planet.getDistance(),x*planet.getDistance()).round();
     }
 /*

@@ -8,10 +8,10 @@ import lombok.Data;
 public class Planet {
     public static final Planet FERENGI = new Planet(1, 500, true);
     public static final Planet BETASOIDE = new Planet(3, 200, true);
-    public static final Planet VULCANO =  new Planet(5, 1000, true);
+    public static final Planet VULCANO =  new Planet(5, 1000, false);
 
     /**
-     * speed in degress per day
+     * speed in degrees per day
      */
     private int speed;
     /**
@@ -19,11 +19,11 @@ public class Planet {
      */
     private int distance;
     /**
-     * clockwise is true
+     * clockwise rotation
      */
     private boolean clockwise;
 
-    public int getDegressAtDays(int day)
+    public int getDegresAtDays(int day)
     {
         int deg = clockwise ? speed * day*-1 : speed * day;
         return deg % 360 ;

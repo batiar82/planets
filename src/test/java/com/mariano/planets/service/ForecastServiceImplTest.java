@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 public class ForecastServiceImplTest {
@@ -22,22 +23,33 @@ public class ForecastServiceImplTest {
     @MockBean
     private ForecastRepository forecastRepository;
 
+
     @Before
     public void setup()
     {
         forecastService = new ForecastServiceImpl(forecastRepository);
     }
 
+    @Test
     public void countDryPeriods() {
+        Integer expectedDryPeriods = 256;
 
+        when(forecastRepository.countByDayAndCondition(any(), any())).thenReturn(expectedDryPeriods);
+        assertEquals(expectedDryPeriods, forecastService.countDryPeriods(22));
     }
-
+    @Test
     public void countRainyPeriods() {
+        Integer expectedRainyPeriods = 35;
 
+        when(forecastRepository.countByDayAndCondition(any(), any())).thenReturn(expectedRainyPeriods);
+        assertEquals(expectedRainyPeriods, forecastService.countRainyPeriods(22));
     }
-
+    @Test
     public void countOptimalPeriods() {
+        Integer expectedOptimalPeriods = 54;
 
+        when(forecastRepository.countByDayAndCondition(any(), any())).thenReturn(expectedOptimalPeriods);
+        assertEquals(expectedOptimalPeriods, forecastService.countOptimalPeriods(22));
     }
 
     public void maxRainyDay() {
