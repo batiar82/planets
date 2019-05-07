@@ -17,22 +17,22 @@ public class ForecastServiceImpl implements ForecastService {
 
     @Override
     public Integer countDryPeriods(Integer day) {
-        return forecastRepository.countByDayAndCondition(day, Forecast.Condition.DRY);
+        return forecastRepository.countByConditionAndDayLessThan(Forecast.Condition.DRY,day);
     }
 
     @Override
     public Integer countRainyPeriods(Integer day) {
-        return forecastRepository.countByDayAndCondition(day, Forecast.Condition.RAINY);
+        return forecastRepository.countByConditionAndDayLessThan(Forecast.Condition.RAINY, day);
     }
 
     @Override
     public Integer countOptimalPeriods(Integer day) {
-        return forecastRepository.countByDayAndCondition(day, Forecast.Condition.OPTIMAL);
+        return forecastRepository.countByConditionAndDayLessThan(Forecast.Condition.OPTIMAL,day);
     }
 
     @Override
     public Integer maxRainyDay() {
-        return 1;//return forecastRepository.findByMaxRainDay();
+        return forecastRepository.findFirstByConditionOrderByIntensityDesc(Forecast.Condition.RAINY).getDay();
     }
 
     @Override

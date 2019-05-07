@@ -19,7 +19,7 @@ public class Forecast {
     Condition condition;
 
     @JsonIgnore
-    boolean maxRainDay;
+    Double intensity;
 
     public enum Condition {
         RAINY, OPTIMAL, DRY;

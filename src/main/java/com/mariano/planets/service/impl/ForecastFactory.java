@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.mariano.planets.utils.Utils.intensity;
+
 @Service
 public class ForecastFactory {
 
@@ -40,6 +43,6 @@ public class ForecastFactory {
         {
             condition = Forecast.Condition.OPTIMAL;
         }
-        return new Forecast(day, condition, false);
+        return new Forecast(day, condition, intensity(vulcanoPosition, ferengiPosition, betasoidePosition) );
     }
 }

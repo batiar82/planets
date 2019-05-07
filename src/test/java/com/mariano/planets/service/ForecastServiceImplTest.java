@@ -58,14 +58,14 @@ public class ForecastServiceImplTest {
 
     @Test
     public void getForecast() {
-        Forecast forecast = new Forecast(1, Forecast.Condition.RAINY, false);
+        Forecast forecast = new Forecast(1, Forecast.Condition.RAINY, 5.1);
         when(forecastRepository.findById(1)).thenReturn(Optional.of(forecast));
         assertEquals(forecast, forecastService.getForecast(1));
     }
 
     @Test(expected = NoSuchElementException.class)
     public void getForecastNotExistent() {
-        Forecast forecast = new Forecast(1, Forecast.Condition.RAINY, false);
+        Forecast forecast = new Forecast(1, Forecast.Condition.RAINY, 5.3);
         when(forecastRepository.findById(1)).thenReturn(Optional.of(forecast));
         assertEquals(forecast, forecastService.getForecast(2));
     }

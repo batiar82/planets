@@ -64,7 +64,7 @@ public class Utils {
      * @param c el tercer punto
      * @return El perimetro
      */
-    public static double perimetro(Point a, Point b, Point c)
+    public static double intensity(Point a, Point b, Point c)
     {
         double one = Math.sqrt(Math.pow(b.getX()-a.getX(),2)+Math.pow(b.getY()-a.getY(),2));
         double two = Math.sqrt(Math.pow(c.getX()-b.getX(),2)+Math.pow(c.getY()-b.getY(),2));

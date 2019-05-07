@@ -29,7 +29,7 @@ public class ForecastControllerTest {
 
     @Test
     public void getForecastShouldReturnForecast() throws Exception {
-        when(forecastService.getForecast(1)).thenReturn(new Forecast(1, Forecast.Condition.RAINY, false));
+        when(forecastService.getForecast(1)).thenReturn(new Forecast(1, Forecast.Condition.RAINY, 5.1));
         this.mockMvc.perform(get("/clima/1")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString(Forecast.Condition.RAINY.name())));
     }

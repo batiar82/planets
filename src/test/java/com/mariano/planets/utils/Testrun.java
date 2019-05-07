@@ -41,12 +41,7 @@ public class Testrun {
         Planet betasoide = new Planet(3, 200, true);
         Planet vulcano = new Planet(5, 1000, true);
         Map<Integer, Double> areas = new HashMap<>();
-        for(int i = 0; i < 20000; i++){
-           /* if(Utils.areAllAligned(i, ferengi, betasoide,vulcano)){
-                diasAlineados.add(i);
-            }*/
-            areas.put(i,Utils.perimetro(Utils.getPosition(ferengi,i),Utils.getPosition(betasoide,i),Utils.getPosition(vulcano,i)));
-        }
+
         System.out.println("Areas "+areas.values().stream().max(Double::compareTo));
         Map<Integer, Double> maxim = areas.entrySet().stream().filter(e -> e.getValue().equals(3108.4389579424783)).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));//.stream().max(Double::compareTo).get();
         System.out.println("MAXIN> "+maxim);
