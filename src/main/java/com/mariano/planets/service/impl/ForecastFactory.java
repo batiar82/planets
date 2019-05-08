@@ -21,7 +21,6 @@ public class ForecastFactory {
         for(int i = 0;i< days; i++)
         {
             Forecast forecast = createForecast(i);
-            //TODO ADD MAX RAINY
             forecasts.add(forecast);
         }
         return forecasts;

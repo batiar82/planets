@@ -46,27 +46,7 @@ public class UtilsTest {
         Planet vulcano = new Planet(5, 1000, false);
         assertTrue(Utils.areAlignedWithTheSun(3240, ferengi, betasoide, vulcano));
     }
-    /*
-    @Test
-    public void testPlanetsAreNotAligned()
-    {
 
-        Planet ferengi = new Planet(1, 500, true);
-        Planet betasoide = new Planet(3, 200, true);
-        Planet vulcano = new Planet(5, 1000, false);
-        assertFalse(Utils.areAllAligned(120, ferengi, betasoide, vulcano));
-    }
-
-    @Test
-    public void testPlanetsArenAligned()
-    {
-
-        Planet ferengi = new Planet(1, 500, true);
-        Planet betasoide = new Planet(3, 200, true);
-        Planet vulcano = new Planet(5, 1000, true);
-        assertTrue(Utils.areAllAligned(180, ferengi, betasoide, vulcano));
-    }
-*/
    @Test
     public void testPointAtZero()
    {
@@ -100,25 +80,7 @@ public class UtilsTest {
         Planet ferengi = new Planet(1, 1, true);
         assertEquals(new Point(-0.70711,-0.70711),Utils.getPosition(ferengi, 135).round());
     }
-/*
-    @Test
-    public void testPointAligned()
-    {
-        Point a = new Point(2,1);
-        Point b = new Point(4,2);
-        Point c = new Point(8,4);
-        assertTrue(Utils.areAligned(a, b, c));
-    }
 
-    @Test
-    public void testPointNotAligned()
-    {
-        Point a = new Point(2,1);
-        Point b = new Point(4,3);
-        Point c = new Point(8,49);
-        assertFalse(Utils.areAligned(a, b, c));
-    }
-*/
     @Test
     public void testArea()
     {

@@ -34,26 +34,28 @@ public class ForecastServiceImplTest {
     public void countDryPeriods() {
         Integer expectedDryPeriods = 256;
 
-        when(forecastRepository.countByDayAndCondition(any(), any())).thenReturn(expectedDryPeriods);
+        when(forecastRepository.countByConditionAndDayLessThan(any(), any())).thenReturn(expectedDryPeriods);
         assertEquals(expectedDryPeriods, forecastService.countDryPeriods(22));
     }
     @Test
     public void countRainyPeriods() {
         Integer expectedRainyPeriods = 35;
 
-        when(forecastRepository.countByDayAndCondition(any(), any())).thenReturn(expectedRainyPeriods);
+        when(forecastRepository.countByConditionAndDayLessThan(any(), any())).thenReturn(expectedRainyPeriods);
         assertEquals(expectedRainyPeriods, forecastService.countRainyPeriods(22));
     }
     @Test
     public void countOptimalPeriods() {
         Integer expectedOptimalPeriods = 54;
 
-        when(forecastRepository.countByDayAndCondition(any(), any())).thenReturn(expectedOptimalPeriods);
-        assertEquals(expectedOptimalPeriods, forecastService.countOptimalPeriods(22));
+        when(forecastRepository.countByConditionAndDayLessThan(any(), any())).thenReturn(expectedOptimalPeriods);
+        assertEquals(expectedOptimalPeriods, forecastService.countOptimalPeriods(900));
     }
-
+    @Test
     public void maxRainyDay() {
-
+        Forecast expectecForecast= new Forecast(33,Forecast.Condition.RAINY, 44.0);
+        when(forecastRepository.findFirstByConditionOrderByIntensityDesc(any())).thenReturn(expectecForecast);
+        assertEquals(Integer.valueOf(33), forecastService.maxRainyDay());
     }
 
     @Test
