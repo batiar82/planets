@@ -22,6 +22,6 @@ public class Forecast {
     Double intensity;
 
     public enum Condition {
-        RAINY, OPTIMAL, DRY;
+        RAINY, OPTIMAL, DRY,UNDETERMINED;
     }
 }

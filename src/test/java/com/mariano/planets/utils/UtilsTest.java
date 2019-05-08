@@ -8,44 +8,6 @@ import static org.junit.Assert.*;
 
 public class UtilsTest {
 
-    @Test
-    public void testPlanetsAligned90()
-    {
-
-        Planet ferengi = new Planet(1, 500, true);
-        Planet betasoide = new Planet(3, 2000, true);
-        Planet vulcano = new Planet(5, 1000, false);
-        assertTrue(Utils.areAlignedWithTheSun(90, ferengi, betasoide, vulcano));
-    }
-
-    @Test
-    public void testPlanetsAligned1080()
-    {
-
-        Planet ferengi = new Planet(1, 500, true);
-        Planet betasoide = new Planet(3, 2000, true);
-        Planet vulcano = new Planet(5, 1000, false);
-        assertTrue(Utils.areAlignedWithTheSun(1080, ferengi, betasoide, vulcano));
-    }
-    @Test
-    public void testPlanetsAligned3240()
-    {
-
-        Planet ferengi = new Planet(1, 500, true);
-        Planet betasoide = new Planet(3, 2000, true);
-        Planet vulcano = new Planet(5, 1000, false);
-        assertTrue(Utils.areAlignedWithTheSun(3240, ferengi, betasoide, vulcano));
-    }
-
-    @Test
-    public void testPlanetsAligned3240b()
-    {
-
-        Planet ferengi = new Planet(1, 500, true);
-        Planet betasoide = new Planet(3, 2000, true);
-        Planet vulcano = new Planet(5, 1000, false);
-        assertTrue(Utils.areAlignedWithTheSun(3240, ferengi, betasoide, vulcano));
-    }
 
    @Test
     public void testPointAtZero()
@@ -81,16 +43,6 @@ public class UtilsTest {
         assertEquals(new Point(-0.70711,-0.70711),Utils.getPosition(ferengi, 135).round());
     }
 
-    @Test
-    public void testArea()
-    {
-        assertEquals(Utils.area(new Point(2,0), new Point(3,4), new Point(-2,5)),21/2.0,0.2222);
-    }
-    @Test
-    public void testArea2()
-    {
-        assertEquals(Utils.area(new Point(0,0), new Point(-5,0), new Point(0,5)),12.5,0.2222);
-    }
 
     @Test
     public void testPeriodoDeLluvia()

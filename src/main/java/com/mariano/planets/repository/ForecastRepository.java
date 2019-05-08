@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ForecastRepository extends CrudRepository<Forecast, Integer> {
 
-    Integer countByDayAndCondition(Integer day, Forecast.Condition condition);
-
     Integer countByConditionAndDayLessThan(Forecast.Condition condition, Integer day);
 
     Forecast findFirstByConditionOrderByIntensityDesc(Forecast.Condition condition);

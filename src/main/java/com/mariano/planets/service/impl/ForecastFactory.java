@@ -32,7 +32,7 @@ public class ForecastFactory {
         Point ferengiPosition = Utils.getPosition(Planet.FERENGI, day);
         Point betasoidePosition = Utils.getPosition(Planet.BETASOIDE, day);
 
-        Forecast.Condition condition = Forecast.Condition.DRY;
+        Forecast.Condition condition= Forecast.Condition.UNDETERMINED;
 
         if(Utils.rainyPeriod(vulcanoPosition, ferengiPosition, betasoidePosition))
         {
@@ -41,6 +41,10 @@ public class ForecastFactory {
         if(Utils.optimalPeriod(vulcanoPosition, ferengiPosition, betasoidePosition))
         {
             condition = Forecast.Condition.OPTIMAL;
+        }
+        if(Utils.dryPeriod(vulcanoPosition, ferengiPosition, betasoidePosition))
+        {
+            condition = Forecast.Condition.DRY;
         }
         return new Forecast(day, condition, intensity(vulcanoPosition, ferengiPosition, betasoidePosition) );
     }
