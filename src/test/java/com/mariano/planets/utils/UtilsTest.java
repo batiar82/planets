@@ -47,7 +47,7 @@ public class UtilsTest {
     @Test
     public void testPeriodoDeLluvia()
     {
-        assertEquals(true, Utils.rainyPeriod(new Point(5,0), new Point(-7,3), new Point(1,-5)));
+        assertTrue(Utils.rainyPeriod(new Point(5, 0), new Point(-7, 3), new Point(1, -5)));
     }
     @Test
     public void testPeriodoDeSequia()

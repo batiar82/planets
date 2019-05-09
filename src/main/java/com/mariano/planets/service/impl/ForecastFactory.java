@@ -18,7 +18,7 @@ public class ForecastFactory {
     {
         List<Forecast> forecasts = new ArrayList<>();
 
-        for(int i = 0;i< days; i++)
+        for(int i = 0;i<= days; i++)
         {
             Forecast forecast = createForecast(i);
             forecasts.add(forecast);
@@ -26,7 +26,7 @@ public class ForecastFactory {
         return forecasts;
     }
 
-    private Forecast createForecast(Integer day)
+    protected Forecast createForecast(Integer day)
     {
         Point vulcanoPosition = Utils.getPosition(Planet.VULCANO,day);
         Point ferengiPosition = Utils.getPosition(Planet.FERENGI, day);

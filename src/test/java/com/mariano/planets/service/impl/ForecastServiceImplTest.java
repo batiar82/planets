@@ -1,8 +1,8 @@
-package com.mariano.planets.service;
+package com.mariano.planets.service.impl;
 
 import com.mariano.planets.model.Forecast;
 import com.mariano.planets.repository.ForecastRepository;
-import com.mariano.planets.service.impl.ForecastServiceImpl;
+import com.mariano.planets.service.ForecastService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -2,8 +2,6 @@ package com.mariano.planets.utils;
 
 
 import com.mariano.planets.model.Forecast;
-import com.mariano.planets.model.Planet;
-import com.mariano.planets.model.Point;
 import com.mariano.planets.repository.ForecastRepository;
 import com.mariano.planets.service.ForecastService;
 import com.mariano.planets.service.impl.ForecastFactory;
@@ -13,10 +11,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import java.awt.geom.Area;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 @Slf4j
