@@ -20,7 +20,7 @@ public class EventListenerBean {
     private PronosticoRepository pronosticoRepository;
 
     private PronosticoFactory forecastFactory;
-
+    private static final int DIEZ_AÑOS = 365*10;
     @Autowired
     PronosticoService service;
 
@@ -32,9 +32,15 @@ public class EventListenerBean {
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        List<Pronostico> forecasts = forecastFactory.crearPronosticos(365*10);
+        List<Pronostico> forecasts = forecastFactory.crearPronosticos(DIEZ_AÑOS);
         pronosticoRepository.saveAll(forecasts);
 
-        log.debug("Pronostico seeded for the next 10 years");
+        log.debug("Pronostico generado para los proximos 10 años");
+
+        log.info(String.format("Cantidad de periodos de lluvis: %s",service.contarPeriodosDeLluvia(DIEZ_AÑOS)));
+        log.info(String.format("Cantidad de periodos de sequia: %s",service.contarPeriodosSecos(DIEZ_AÑOS)));
+        log.info(String.format("Cantidad de periodos de optimos: %s",service.contarPeriodosOptimos(DIEZ_AÑOS)));
+        log.info(String.format("Dia de mayor intensidad: %s",service.diaMayorIntensidad()));
+
     }
 }

@@ -23,7 +23,6 @@ public class PronosticoServiceImplTest {
     @MockBean
     private PronosticoRepository pronosticoRepository;
 
-
     @Before
     public void setup()
     {
