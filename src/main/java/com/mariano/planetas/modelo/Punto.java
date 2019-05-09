@@ -1,4 +1,4 @@
-package com.mariano.planets.model;
+package com.mariano.planetas.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -12,13 +12,13 @@ import java.math.RoundingMode;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Point {
+public class Punto {
     private double x;
     private double y;
 
-    public Point round()
+    public Punto redondear()
     {
-        return new Point(
+        return new Punto(
                 BigDecimal.valueOf(x).setScale(5, RoundingMode.HALF_UP).doubleValue(),
                 BigDecimal.valueOf(y).setScale(5, RoundingMode.HALF_UP).doubleValue()
         );

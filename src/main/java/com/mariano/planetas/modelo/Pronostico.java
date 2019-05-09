@@ -1,4 +1,4 @@
-package com.mariano.planets.model;
+package com.mariano.planetas.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -14,16 +14,16 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Forecast {
+public class Pronostico {
     @Id
-    Integer day;
+    Integer dia;
 
-    Condition condition;
+    Condicion condicion;
 
     @JsonIgnore
-    Double intensity;
+    Double intensidad;
 
-    public enum Condition {
-        RAINY, OPTIMAL, DRY,UNDETERMINED
+    public enum Condicion {
+        LLUVIA, OPTIMA, SEQUIA, ERRONEO
     }
 }
