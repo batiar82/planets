@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -26,29 +27,34 @@ public class PronosticoServiceImplTest {
     @Before
     public void setup()
     {
-        pronosticoService = new PronosticoServiceImpl(pronosticoRepository);
+        Map<Pronostico.Condicion, Integer> periodos = Map.of(
+                Pronostico.Condicion.LLUVIA,5,
+                Pronostico.Condicion.SEQUIA,9,
+                Pronostico.Condicion.OPTIMA,15);
+
+        pronosticoService = new PronosticoServiceImpl(pronosticoRepository,periodos);
     }
 
     @Test
-    public void countDryPeriods() {
+    public void contarDiasSecos() {
         Integer expectedDryPeriods = 256;
 
         when(pronosticoRepository.countByCondicionAndDiaLessThan(any(), any())).thenReturn(expectedDryPeriods);
-        assertEquals(expectedDryPeriods, pronosticoService.contarPeriodosSecos(22));
+        assertEquals(expectedDryPeriods, pronosticoService.contarDiasSecos(22));
     }
     @Test
-    public void countRainyPeriods() {
+    public void contarDiasDeLluvia() {
         Integer expectedRainyPeriods = 35;
 
         when(pronosticoRepository.countByCondicionAndDiaLessThan(any(), any())).thenReturn(expectedRainyPeriods);
-        assertEquals(expectedRainyPeriods, pronosticoService.contarPeriodosDeLluvia(22));
+        assertEquals(expectedRainyPeriods, pronosticoService.contarDiasDeLluvia(22));
     }
     @Test
-    public void countOptimalPeriods() {
-        Integer periodosOptimosEsperados = 54;
+    public void contarDiasOptimos() {
+        Integer diasOptimosEsperados = 54;
 
-        when(pronosticoRepository.countByCondicionAndDiaLessThan(any(), any())).thenReturn(periodosOptimosEsperados);
-        assertEquals(periodosOptimosEsperados, pronosticoService.contarPeriodosOptimos(900));
+        when(pronosticoRepository.countByCondicionAndDiaLessThan(any(), any())).thenReturn(diasOptimosEsperados);
+        assertEquals(diasOptimosEsperados, pronosticoService.contarDiasOptimos(900));
     }
     @Test
     public void maxRainyDay() {
@@ -69,5 +75,12 @@ public class PronosticoServiceImplTest {
         Pronostico pronostico = new Pronostico(1, Pronostico.Condicion.LLUVIA, 5.3);
         when(pronosticoRepository.findById(1)).thenReturn(Optional.of(pronostico));
         assertEquals(pronostico, pronosticoService.getPronostico(2));
+    }
+
+    @Test
+    public void contarPeriodsTest(){
+        assertEquals(15,pronosticoService.contarPeriodos(Pronostico.Condicion.OPTIMA).intValue());
+        assertEquals(9,pronosticoService.contarPeriodos(Pronostico.Condicion.SEQUIA).intValue());
+        assertEquals(5,pronosticoService.contarPeriodos(Pronostico.Condicion.LLUVIA).intValue());
     }
 }

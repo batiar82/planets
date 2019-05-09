@@ -37,10 +37,14 @@ public class EventListenerBean {
 
         log.debug("Pronostico generado para los proximos 10 años");
 
-        log.info(String.format("Cantidad de periodos de lluvis: %s",service.contarPeriodosDeLluvia(DIEZ_AÑOS)));
-        log.info(String.format("Cantidad de periodos de sequia: %s",service.contarPeriodosSecos(DIEZ_AÑOS)));
-        log.info(String.format("Cantidad de periodos de optimos: %s",service.contarPeriodosOptimos(DIEZ_AÑOS)));
+        log.info(String.format("Cantidad de dias de lluvis: %s",service.contarDiasDeLluvia(DIEZ_AÑOS)));
+        log.info(String.format("Cantidad de dias de sequia: %s",service.contarDiasSecos(DIEZ_AÑOS)));
+        log.info(String.format("Cantidad de dias de optimos: %s",service.contarDiasOptimos(DIEZ_AÑOS)));
         log.info(String.format("Dia de mayor intensidad: %s",service.diaMayorIntensidad()));
+        log.info(String.format("Cantidad de periodos de lluvis: %s",service.contarPeriodos(Pronostico.Condicion.LLUVIA)));
+        log.info(String.format("Cantidad de periodos de sequia: %s",service.contarPeriodos(Pronostico.Condicion.SEQUIA)));
+        log.info(String.format("Cantidad de periodos de optimos: %s",service.contarPeriodos(Pronostico.Condicion.OPTIMA)));
+
 
     }
 }
