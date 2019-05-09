@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -27,10 +28,10 @@ public class PronosticoServiceImplTest {
     @Before
     public void setup()
     {
-        Map<Pronostico.Condicion, Integer> periodos = Map.of(
-                Pronostico.Condicion.LLUVIA,5,
-                Pronostico.Condicion.SEQUIA,9,
-                Pronostico.Condicion.OPTIMA,15);
+        Map<Pronostico.Condicion, Integer> periodos = new HashMap<>();
+                periodos.put(Pronostico.Condicion.LLUVIA,5);
+                periodos.put(Pronostico.Condicion.SEQUIA,9);
+                periodos.put(Pronostico.Condicion.OPTIMA,15);
 
         pronosticoService = new PronosticoServiceImpl(pronosticoRepository,periodos);
     }

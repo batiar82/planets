@@ -6,11 +6,14 @@ import com.mariano.planetas.modelo.Punto;
 import com.mariano.planetas.utils.Utils;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.assertEquals;
 
 
 public class PronosticoFactoryTest {
-    private PronosticoFactory pronosticoFactory = new PronosticoFactory();
+
+    private PronosticoFactory pronosticoFactory = new PronosticoFactory(new HashMap<>());
 
     @Test
     public void createDryTest()

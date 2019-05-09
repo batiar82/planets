@@ -17,8 +17,11 @@ import static com.mariano.planetas.utils.Utils.intensidad;
 @Service
 public class PronosticoFactory {
 
-    @Autowired
     private Map<Pronostico.Condicion, Integer> periodos;
+
+    public PronosticoFactory(Map<Pronostico.Condicion, Integer> periodos) {
+        this.periodos = periodos;
+    }
 
     public List<Pronostico> crearPronosticos(Integer dias)
     {
