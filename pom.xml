@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mariano</groupId>
-	<artifactId>planets</artifactId>
+	<artifactId>planetas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>planets</name>
+	<name>planetas</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

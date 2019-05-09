@@ -1,12 +1,12 @@
-package com.mariano.planets;
+package com.mariano.planetas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PlanetsApplication {
+public class PlanetasApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(PlanetsApplication.class, args);
+		SpringApplication.run(PlanetasApplication.class, args);
 	}
 
 }

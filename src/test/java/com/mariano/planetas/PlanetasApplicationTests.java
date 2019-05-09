@@ -1,4 +1,4 @@
-package com.mariano.planets;
+package com.mariano.planetas;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

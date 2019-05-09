@@ -1,7 +1,7 @@
-package com.mariano.planets.utils;
+package com.mariano.planetas.utils;
 
-import com.mariano.planets.model.Planet;
-import com.mariano.planets.model.Point;
+import com.mariano.planetas.modelo.Planeta;
+import com.mariano.planetas.modelo.Punto;
 
 public class Utils {
 
@@ -13,8 +13,8 @@ public class Utils {
      * @param c el tercer punto
      * @return true si los puntos contienen al Sol (0,0), false sino
      */
-    public static boolean rainyPeriod(Point a, Point b, Point c){
-        Point sol = new Point(0,0);
+    public static boolean periodoDeLluvia(Punto a, Punto b, Punto c){
+        Punto sol = new Punto(0,0);
         double t0 = area(a,b,c);
         double t1 = area(a,b,sol);
         double t2 = area(b,c,sol);
@@ -29,8 +29,8 @@ public class Utils {
      * @param c
      * @return
      */
-    public static boolean optimalPeriod(Point a, Point b, Point c){
-        Point sol = new Point(0,0);
+    public static boolean periodoOptimo(Punto a, Punto b, Punto c){
+        Punto sol = new Punto(0,0);
         return area(a,b,c) == 0 && area(a,b,sol) !=0;
     }
 
@@ -41,22 +41,22 @@ public class Utils {
      * @param c
      * @return
      */
-    public static boolean dryPeriod(Point a, Point b, Point c){
-        Point sol = new Point(0,0);
+    public static boolean periodoSeco(Punto a, Punto b, Punto c){
+        Punto sol = new Punto(0,0);
         return area(a,b,c) == 0 && area(a,b,sol) ==0;
     }
 
     /**
      * Calculo la posicion de un planeta
-     * @param planet
+     * @param planeta
      * @param days
      * @return
      */
-    public static Point getPosition(Planet planet, int days)
+    public static Punto getPosicion(Planeta planeta, int days)
     {
-        double x = Math.sin(Math.toRadians(planet.getDegresAtDays(days)));
-        double y =  Math.cos(Math.toRadians(planet.getDegresAtDays(days)));
-        return new Point(y*planet.getDistance(),x*planet.getDistance()).round();
+        double x = Math.sin(Math.toRadians(planeta.getGradosParaElDia(days)));
+        double y =  Math.cos(Math.toRadians(planeta.getGradosParaElDia(days)));
+        return new Punto(y* planeta.getDistancia(),x* planeta.getDistancia()).redondear();
     }
 
     /**
@@ -66,7 +66,7 @@ public class Utils {
      * @param c el tercer punto
      * @return el area
      */
-    private static double area(Point a, Point b, Point c)
+    private static double area(Punto a, Punto b, Punto c)
     {
         return Math.abs((a.getX()*b.getY()*1)+(a.getY()*1*c.getX())+(1*b.getX()*c.getY())-(1*b.getY()*c.getX())-(a.getY()*b.getX()*1)-(a.getX()*1*c.getY()))/2;
 
@@ -79,12 +79,12 @@ public class Utils {
      * @param c el tercer punto
      * @return El perimetro
      */
-    public static double intensity(Point a, Point b, Point c)
+    public static double intensidad(Punto a, Punto b, Punto c)
     {
-        double one = Math.sqrt(Math.pow(b.getX()-a.getX(),2)+Math.pow(b.getY()-a.getY(),2));
-        double two = Math.sqrt(Math.pow(c.getX()-b.getX(),2)+Math.pow(c.getY()-b.getY(),2));
-        double three = Math.sqrt(Math.pow(c.getX()-a.getX(),2)+Math.pow(c.getY()-a.getY(),2));
-        return one+two+three;
+        double ladoAB = Math.sqrt(Math.pow(b.getX()-a.getX(),2)+Math.pow(b.getY()-a.getY(),2));
+        double ladoCB = Math.sqrt(Math.pow(c.getX()-b.getX(),2)+Math.pow(c.getY()-b.getY(),2));
+        double ladoAC = Math.sqrt(Math.pow(c.getX()-a.getX(),2)+Math.pow(c.getY()-a.getY(),2));
+        return ladoAB+ladoAC+ladoCB;
         }
 
 
